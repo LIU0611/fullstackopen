@@ -1,7 +1,5 @@
 # Full Stack Open - University of Helsinki - 2024
 ## About the course
-This repository includes my assignment submissions for the Helsinki University Full Stack Open 2024 course (https://fullstackopen.com/en/).
-
 The course focuses on Modern JavaScript-based Web Development, particularly on building single-page applications with ReactJS that interact with REST APIs created using Node.js.
 
 The course also covers additional topics, including:
