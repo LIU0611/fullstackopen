@@ -10,3 +10,11 @@ The course also covers additional topics, including:
 - React Native: An open-source UI software framework for creating native mobile applications using JavaScript.
 - CI/CD: Continuous Integration (CI) and Continuous Delivery (CD).
 - Docker Containers: An open platform for developing, shipping, and running applications by virtualizing the operating system on which it is installed.
+
+## Part 0
+- [ ] 0.1: HTML
+- [ ] 0.2: CSS
+- [ ] 0.3: HTML forms
+- [ ] 0.4: New note diagram
+- [ ] 0.5: Single page app diagram
+- [ ] 0.6: New note in Single page app diagram
