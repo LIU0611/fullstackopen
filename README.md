@@ -1,6 +1,12 @@
 # Full Stack Open - University of Helsinki - 2024
 ## About the course
-Learn React, Redux, Node.js, MongoDB, GraphQL and TypeScript in one go! This course will introduce you to modern JavaScript-based web development. The main focus is on building single page applications with ReactJS that use REST APIs built with Node.js.
+This repository includes my assignment submissions for the Helsinki University Full Stack Open 2021 course (https://fullstackopen.com/en/).
 
-## About this repository
-This repository contains my exercise solutions for the 2024 edition of the Full Stack Open course from the University of Helsinki. (Link: https://fullstackopen.com/en/)
+The course focuses on Modern JavaScript-based Web Development, particularly on building single-page applications with ReactJS that interact with REST APIs created using Node.js.
+
+The course also covers additional topics, including:
+- GraphQL: A modern alternative to REST APIs.
+- TypeScript: An open-source, typed superset of JavaScript that compiles to plain JavaScript.
+- React Native: An open-source UI software framework for creating native mobile applications using JavaScript.
+- CI/CD: Continuous Integration (CI) and Continuous Delivery (CD).
+- Docker Containers: An open platform for developing, shipping, and running applications by virtualizing the operating system on which it is installed.
