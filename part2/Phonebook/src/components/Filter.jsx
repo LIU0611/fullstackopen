@@ -1,10 +1,11 @@
-const Filter = ({ searchTerm, handleSearchChange }) => {
-    return (
-      <div>
-        filter shown with <input value={searchTerm} onChange={handleSearchChange} />
-      </div>
-    )
-  }
+import React from 'react';
 
-export default Filter
-// Path: Phonebook/src/components/Filter.jsx
+const Filter = ({ value, onChange }) => {
+  return (
+    <div>
+      filter shown with <input value={value} onChange={onChange} />
+    </div>
+  );
+};
+
+export default Filter;
