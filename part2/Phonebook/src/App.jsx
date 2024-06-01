@@ -6,25 +6,24 @@ import Notification from './Notification';
 import personsService from '../services/persons';
 
 const App = () => {
+  // State variables
   const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
   const [filter, setFilter] = useState('');
   const [notification, setNotification] = useState({ message: null, type: null });
 
+  // Fetch all persons from server on initial render
   useEffect(() => {
     personsService.getAll().then(initialPersons => {
       setPersons(initialPersons);
     });
   }, []);
 
+  // Add or update a person
   const addPerson = (event) => {
     event.preventDefault();
-    const personObject = {
-      name: newName,
-      number: newNumber,
-    };
-
+    const personObject = { name: newName, number: newNumber };
     const existingPerson = persons.find(person => person.name === newName);
 
     if (existingPerson) {
@@ -34,71 +33,58 @@ const App = () => {
             setPersons(persons.map(person => person.id !== existingPerson.id ? person : returnedPerson));
             setNewName('');
             setNewNumber('');
-            setNotification({ message: `Updated ${newName}`, type: 'success' });
-            setTimeout(() => {
-              setNotification({ message: null, type: null });
-            }, 5000);
+            showNotification(`Updated ${newName}`, 'success');
           })
           .catch(error => {
-            setNotification({ message: `Information of ${newName} has already been removed from server`, type: 'error' });
+            showNotification(`Information of ${newName} has already been removed from server`, 'error');
             setPersons(persons.filter(person => person.id !== existingPerson.id));
-            setTimeout(() => {
-              setNotification({ message: null, type: null });
-            }, 5000);
           });
       }
     } else {
-      personsService.create(personObject).then(returnedPerson => {
-        setPersons(persons.concat(returnedPerson));
-        setNewName('');
-        setNewNumber('');
-        setNotification({ message: `Added ${newName}`, type: 'success' });
-        setTimeout(() => {
-          setNotification({ message: null, type: null });
-        }, 5000);
-      })
-      .catch(error => {
-        setNotification({ message: `Failed to add ${newName}`, type: 'error' });
-        setTimeout(() => {
-          setNotification({ message: null, type: null });
-        }, 5000);
-      });
+      personsService.create(personObject)
+        .then(returnedPerson => {
+          setPersons(persons.concat(returnedPerson));
+          setNewName('');
+          setNewNumber('');
+          showNotification(`Added ${newName}`, 'success');
+        })
+        .catch(error => {
+          showNotification(`Failed to add ${newName}`, 'error');
+        });
     }
   };
 
+  // Delete a person
   const handleDelete = (id, name) => {
     if (window.confirm(`Delete ${name}?`)) {
-      personsService.remove(id).then(() => {
-        setPersons(persons.filter(person => person.id !== id));
-        setNotification({ message: `Deleted ${name}`, type: 'success' });
-        setTimeout(() => {
-          setNotification({ message: null, type: null });
-        }, 5000);
-      })
-      .catch(error => {
-        setNotification({ message: `Failed to delete ${name}`, type: 'error' });
-        setTimeout(() => {
-          setNotification({ message: null, type: null });
-        }, 5000);
-      });
+      personsService.remove(id)
+        .then(() => {
+          setPersons(persons.filter(person => person.id !== id));
+          showNotification(`Deleted ${name}`, 'success');
+        })
+        .catch(error => {
+          showNotification(`Failed to delete ${name}`, 'error');
+        });
     }
   };
 
-  const handleNameChange = (event) => {
-    setNewName(event.target.value);
-  };
+  // Handle input changes
+  const handleNameChange = (event) => setNewName(event.target.value);
+  const handleNumberChange = (event) => setNewNumber(event.target.value);
+  const handleFilterChange = (event) => setFilter(event.target.value);
 
-  const handleNumberChange = (event) => {
-    setNewNumber(event.target.value);
-  };
-
-  const handleFilterChange = (event) => {
-    setFilter(event.target.value);
-  };
-
+  // Filter persons based on the search input
   const personsToShow = persons.filter(person =>
     person.name.toLowerCase().includes(filter.toLowerCase())
   );
+
+  // Show notification
+  const showNotification = (message, type) => {
+    setNotification({ message, type });
+    setTimeout(() => {
+      setNotification({ message: null, type: null });
+    }, 5000);
+  };
 
   return (
     <div>
