@@ -37,6 +37,7 @@ const App = () => {
 
   const fetchWeather = (capital) => {
     const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+
     axios
       .get(`https://api.openweathermap.org/data/2.5/weather?q=${capital}&appid=${apiKey}&units=metric`)
       .then((response) => {
