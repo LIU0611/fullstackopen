@@ -1,14 +1,16 @@
 const express = require('express');
 const morgan = require('morgan');
+const cors = require('cors');
+const path = require('path');
 const app = express();
 
+app.use(cors());
 app.use(express.json());
 morgan.token('body', (req) => JSON.stringify(req.body));
-
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'));
 
 
-let persons = [
+const persons = [
   {
     "id": 1,
     "name": "Arto Hellas",
@@ -88,6 +90,14 @@ app.post('/api/persons', (req, res) => {
   persons = persons.concat(person);
 
   res.json(person);
+});
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// The "catchall" handler: for any request that doesn't match one above, send back index.html.
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
 const PORT = process.env.PORT || 3001;
