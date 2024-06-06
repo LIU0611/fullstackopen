@@ -36,8 +36,7 @@ const App = () => {
             showNotification(`Updated ${newName}`, 'success');
           })
           .catch(error => {
-            showNotification(`Information of ${newName} has already been removed from server`, 'error');
-            setPersons(persons.filter(person => person.id !== existingPerson.id));
+            showNotification(error.response.data.error, 'error');
           });
       }
     } else {
@@ -49,7 +48,7 @@ const App = () => {
           showNotification(`Added ${newName}`, 'success');
         })
         .catch(error => {
-          showNotification(`Failed to add ${newName}`, 'error');
+          showNotification(error.response.data.error, 'error');
         });
     }
   };

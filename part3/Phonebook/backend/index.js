@@ -16,6 +16,9 @@ app.use(express.json());
 morgan.token('body', (req) => JSON.stringify(req.body));
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'));
 
+// Middleware to serve static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
+
 // Fetch all phonebook entries from the database
 app.get('/api/persons', (req, res) => {
   Person.find({}).then(persons => {
