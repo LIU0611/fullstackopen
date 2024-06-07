@@ -34,7 +34,7 @@ The course also covers additional topics, including:
 ### Part 3: Programming a Server with NodeJS and Express
 *Introduces backend development with Node.js and Express, covering routing, middleware, and building RESTful APIs. Emphasizes creating a full-stack application by connecting the front end to the back end.*
 
-- [Phonebook]([https://github.com/LIU0611/fullstackopen/tree/main/part2/Phonebook](https://github.com/LIU0611/fullstackopen/tree/main/part3/Phonebook)) - Comprehensive phonebook application using Node.js and Express for server-side logic and MongoDB for data storage. Features include adding, updating, and deleting contacts, with a React front end and server-side validation and ESLint integration for data integrity and code consistency.
+- [Phonebook](https://github.com/LIU0611/fullstackopen/tree/main/part3/Phonebook) - Comprehensive phonebook application using Node.js and Express for server-side logic and MongoDB for data storage. Features include adding, updating, and deleting contacts, with a React front end and server-side validation and ESLint integration for data integrity and code consistency.
 
 ### Part 4: Testing Express Servers, User Administration
 *Discusses testing Node.js applications using Jest and Supertest. Covers user authentication and authorization, including hashing passwords and handling user sessions.*
