@@ -1,14 +1,9 @@
 {
   "persons": [
     {
-      "id": "1",
-      "name": "Arto Hellas",
-      "number": "040-123456"
-    },
-    {
-      "name": "asd",
-      "number": "1234",
-      "id": "51a7"
+      "id": "2db5",
+      "name": "Rick",
+      "number": "012-3456789"
     }
   ]
 }
